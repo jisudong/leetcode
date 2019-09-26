@@ -91,4 +91,26 @@ ListNode* deleteDuplicates(ListNode* head) {
 }
 
 
+/**
+ 141.环形链表
+ 
+ 给定一个链表，判断链表中是否有环
+ https://leetcode-cn.com/problems/linked-list-cycle/
+ */
+bool hasCycle(ListNode *head) {
+    if (head == NULL || head->next == NULL) return false;
+    
+    ListNode *slow = head;
+    ListNode *fast = head->next;
+    while (fast != NULL && fast->next != NULL) {
+        slow = slow->next;
+        fast = fast->next->next;
+        if (slow == fast) {
+            return true;
+        }
+    }
+    return false;
+}
+
+
 #endif /* linked_list_hpp */

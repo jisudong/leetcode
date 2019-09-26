@@ -20,16 +20,19 @@ int main(int argc, const char * argv[]) {
     for (int i = 1; i < 7; i++) {
         p1->next = new ListNode(i);
         p1 = p1->next;
-        if (i % 2 != 0) {
-            p1->next = new ListNode(i);
-            p1 = p1->next;
-        } else {
-            p2->next = new ListNode(i);
-            p2 = p2->next;
-        }
+//        if (i % 2 != 0) {
+//            p1->next = new ListNode(i);
+//            p1 = p1->next;
+//        } else {
+//            p2->next = new ListNode(i);
+//            p2 = p2->next;
+//        }
     }
+    
+    p1->next = l1->next->next->next;
    
-    ListNode *result = deleteDuplicates(l1->next);
+//    ListNode *result = deleteDuplicates(l1->next);
+    bool isCycle = hasCycle(l1->next);
        
     getchar();
     
