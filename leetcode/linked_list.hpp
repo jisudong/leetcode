@@ -38,27 +38,56 @@ void deleteNode(ListNode* node) {
  https://leetcode-cn.com/problems/merge-two-sorted-lists/
  */
 ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
+//    if (l1 == NULL) return l2;
+//    if (l2 == NULL) return l1;
+//    ListNode *dummyhead = new ListNode(0);
+//    ListNode *p = dummyhead;
+//    while (l1 != NULL && l2 != NULL) {
+//        if (l1->val < l2->val) {
+//            p->next = l1;
+//            p = p->next;
+//            l1 = l1->next;
+//        } else {
+//            p->next = l2;
+//            p = p->next;
+//            l2 = l2->next;
+//        }
+//    }
+//    if (l1 == NULL) {
+//        p->next = l2;
+//    } else {
+//        p->next = l1;
+//    }
+//    return dummyhead->next;
+    
     if (l1 == NULL) return l2;
     if (l2 == NULL) return l1;
-    ListNode *dummyhead = new ListNode(0);
-    ListNode *p = dummyhead;
-    while (l1 != NULL && l2 != NULL) {
-        if (l1->val < l2->val) {
-            p->next = l1;
-            p = p->next;
-            l1 = l1->next;
+    if (l1->val < l2->val) {
+        l1->next = mergeTwoLists(l1->next, l2);
+        return l1;
+    } else {
+        l2->next = mergeTwoLists(l1, l2->next);
+        return l2;
+    }
+}
+
+
+/**
+ 83.删除排序链表中的重复元素
+ 
+ 给定一个排序链表，删除所有重复的元素，使得每个元素只出现一次。
+ https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list/
+ */
+ListNode* deleteDuplicates(ListNode* head) {
+    ListNode *p = head;
+    while (p != NULL && p->next != NULL) {
+        if (p->val == p->next->val) {
+            p->next = p->next->next;
         } else {
-            p->next = l2;
             p = p->next;
-            l2 = l2->next;
         }
     }
-    if (l1 == NULL) {
-        p->next = l2;
-    } else {
-        p->next = l1;
-    }
-    return dummyhead->next;
+    return head;
 }
 
 

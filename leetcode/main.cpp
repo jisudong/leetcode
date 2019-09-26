@@ -17,9 +17,10 @@ int main(int argc, const char * argv[]) {
     ListNode *l2 = new ListNode(0);
     ListNode *p1 = l1;
     ListNode *p2 = l2;
-    for (int i = 1; i < 6; i++) {
-        
-        if (i % 2 == 0) {
+    for (int i = 1; i < 7; i++) {
+        p1->next = new ListNode(i);
+        p1 = p1->next;
+        if (i % 2 != 0) {
             p1->next = new ListNode(i);
             p1 = p1->next;
         } else {
@@ -28,8 +29,7 @@ int main(int argc, const char * argv[]) {
         }
     }
    
-    ListNode *result = mergeTwoLists(l1->next, l2->next);
-    
+    ListNode *result = deleteDuplicates(l1->next);
        
     getchar();
     
