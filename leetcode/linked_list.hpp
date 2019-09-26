@@ -113,4 +113,31 @@ bool hasCycle(ListNode *head) {
 }
 
 
+/**
+ 206.反转链表
+ 
+ 反转一个单链表
+ https://leetcode-cn.com/problems/reverse-linked-list/
+ */
+ListNode* reverseList(ListNode* head) {
+//    ListNode *result = NULL, *tmp;
+//    while (head != NULL) {
+//        tmp = head;
+//        head = head->next;
+//        tmp->next = result;
+//        result = tmp;
+//    }
+//    return result;
+    
+    ListNode *result = head;
+    while (result && head->next != NULL) {
+        ListNode *p = head->next;
+        head->next = p->next;
+        p->next = result;
+        result = p;
+    }
+    return result;
+}
+
+
 #endif /* linked_list_hpp */

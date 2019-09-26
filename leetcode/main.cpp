@@ -29,10 +29,11 @@ int main(int argc, const char * argv[]) {
 //        }
     }
     
-    p1->next = l1->next->next->next;
+//    p1->next = l1->next->next->next;
    
 //    ListNode *result = deleteDuplicates(l1->next);
-    bool isCycle = hasCycle(l1->next);
+//    bool isCycle = hasCycle(l1->next);
+    ListNode *result = reverseList(l1->next);
        
     getchar();
     
