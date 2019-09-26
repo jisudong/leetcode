@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2294F372233C5C9700A14FC3 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2294F371233C5C9700A14FC3 /* main.cpp */; };
-		2294F37B233C5ECA00A14FC3 /* linked_list.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2294F379233C5ECA00A14FC3 /* linked_list.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,7 +25,6 @@
 /* Begin PBXFileReference section */
 		2294F36E233C5C9700A14FC3 /* leetcode */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = leetcode; sourceTree = BUILT_PRODUCTS_DIR; };
 		2294F371233C5C9700A14FC3 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		2294F379233C5ECA00A14FC3 /* linked_list.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = linked_list.cpp; sourceTree = "<group>"; };
 		2294F37A233C5ECA00A14FC3 /* linked_list.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = linked_list.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -62,7 +60,6 @@
 			children = (
 				2294F371233C5C9700A14FC3 /* main.cpp */,
 				2294F37A233C5ECA00A14FC3 /* linked_list.hpp */,
-				2294F379233C5ECA00A14FC3 /* linked_list.cpp */,
 			);
 			path = leetcode;
 			sourceTree = "<group>";
@@ -124,7 +121,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2294F37B233C5ECA00A14FC3 /* linked_list.cpp in Sources */,
 				2294F372233C5C9700A14FC3 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

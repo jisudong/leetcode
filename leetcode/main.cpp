@@ -9,11 +9,29 @@
 #include <iostream>
 #include "linked_list.hpp"
 
+using namespace std;
+
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
     
+    ListNode *l1 = new ListNode(0);
+    ListNode *l2 = new ListNode(0);
+    ListNode *p1 = l1;
+    ListNode *p2 = l2;
+    for (int i = 1; i < 6; i++) {
+        
+        if (i % 2 == 0) {
+            p1->next = new ListNode(i);
+            p1 = p1->next;
+        } else {
+            p2->next = new ListNode(i);
+            p2 = p2->next;
+        }
+    }
    
+    ListNode *result = mergeTwoLists(l1->next, l2->next);
+    
+       
+    getchar();
     
     return 0;
 }
