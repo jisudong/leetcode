@@ -8,8 +8,18 @@
 
 #include <iostream>
 #include "linked_list.hpp"
+#include <queue>
 
 using namespace std;
+
+void middleorder(TreeNode *tree) {
+    if (tree == NULL) {
+        return;
+    }
+    middleorder(tree->left);
+    cout << tree->val << endl;
+    middleorder(tree->right);
+}
 
 int main(int argc, const char * argv[]) {
     
@@ -17,7 +27,7 @@ int main(int argc, const char * argv[]) {
     ListNode *l2 = new ListNode(0);
     ListNode *p1 = l1;
     ListNode *p2 = l2;
-    for (int i = 1; i < 7; i++) {
+    for (int i = 1; i < 11; i++) {
         p1->next = new ListNode(i);
         p1 = p1->next;
 //        if (i % 2 != 0) {
@@ -33,7 +43,11 @@ int main(int argc, const char * argv[]) {
    
 //    ListNode *result = deleteDuplicates(l1->next);
 //    bool isCycle = hasCycle(l1->next);
-    ListNode *result = reverseList(l1->next);
+//    ListNode *result = reverseList(l1->next);
+
+    TreeNode *tree = sortedListToBST(l1->next);
+    
+    middleorder(tree);
        
     getchar();
     

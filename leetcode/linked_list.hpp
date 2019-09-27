@@ -10,6 +10,8 @@
 #define linked_list_hpp
 
 #include <iostream>
+#include <vector>
+#include <queue>
 
 struct ListNode {
     int val;
@@ -17,6 +19,12 @@ struct ListNode {
     ListNode(int x) : val(x), next(NULL) {}
 };
 
+struct TreeNode {
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+};
 
 
 /**
@@ -139,5 +147,128 @@ ListNode* reverseList(ListNode* head) {
     return result;
 }
 
+
+/**
+ 109. 有序链表转换二叉搜索树
+ 
+ 给定一个单链表，其中的元素按升序排序，将其转换为高度平衡的二叉搜索树。
+ https://leetcode-cn.com/problems/convert-sorted-list-to-binary-search-tree/
+ */
+TreeNode* sortedListToBST(ListNode* head) {
+//    if (head == NULL) return NULL;
+//    if (head->next == NULL) return new TreeNode(head->val);
+//
+//    ListNode *pre = head;
+//    ListNode *mid = pre->next;
+//    ListNode *p = mid->next;
+//
+//    while (p != NULL && p->next != NULL) {
+//        mid = mid->next;
+//        p = p->next->next;
+//        pre = pre->next;
+//    }
+//
+//    pre->next = NULL; // 把链表断开为左、右两段链表
+//    TreeNode *root = new TreeNode(mid->val);
+//    root->left = sortedListToBST(head);
+//    root->right = sortedListToBST(mid->next);
+//
+//    return root;
+    
+    
+    if (head == NULL) return NULL;
+    if (head->next == NULL) return new TreeNode(head->val);
+    
+    std::vector<ListNode *> nodes;
+    ListNode *p = head;
+    
+    while (p != NULL) {
+        nodes.push_back(p);
+        p = p->next;
+    }
+   
+    int rootIndex = (int)nodes.size() >> 1;
+    TreeNode *root = new TreeNode(nodes.at(rootIndex)->val);
+    
+    std::queue<TreeNode *> parentNodes;
+    parentNodes.push(root);
+    
+    std::queue<int> ranges;
+    int invalidIndex = -1;
+    if (rootIndex == 0) {
+        ranges.push(invalidIndex);
+        ranges.push(invalidIndex);
+    } else {
+        ranges.push(0);
+        ranges.push(rootIndex - 1);
+    }
+    
+    if (rootIndex == nodes.size() - 1) {
+        ranges.push(invalidIndex);
+        ranges.push(invalidIndex);
+    } else {
+        ranges.push(rootIndex + 1);
+        ranges.push((int)nodes.size() - 1);
+    }
+    
+    TreeNode *parent;
+    while (!ranges.empty()) {
+        parent = parentNodes.front();
+        parentNodes.pop();
+        
+        if (ranges.size() > 0) {
+            int start = ranges.front();
+            ranges.pop();
+            int end = ranges.front();
+            ranges.pop();
+            if (start != invalidIndex) {
+                int mid = (start + end) >> 1;
+                TreeNode *leftNode = new TreeNode(nodes.at(mid)->val);
+                parent->left = leftNode;
+                if (start != end) {
+                    if (start != mid) {
+                        ranges.push(start);
+                        ranges.push(mid - 1);
+                    } else {
+                        ranges.push(invalidIndex);
+                        ranges.push(invalidIndex);
+                    }
+                    
+                    ranges.push(mid + 1);
+                    ranges.push(end);
+                    parentNodes.push(leftNode);
+                }
+            }
+        }
+        
+        if (ranges.size() > 0) {
+            int start = ranges.front();
+            ranges.pop();
+            int end = ranges.front();
+            ranges.pop();
+            
+            if (start != invalidIndex) {
+                int mid = (start + end) >> 1;
+                TreeNode *rightNode = new TreeNode(nodes.at(mid)->val);
+                parent->right = rightNode;
+                if (start != end) {
+                    if (start != mid) {
+                        ranges.push(start);
+                        ranges.push(mid - 1);
+                    } else {
+                        ranges.push(invalidIndex);
+                        ranges.push(invalidIndex);
+                    }
+                    
+                    ranges.push(mid + 1);
+                    ranges.push(end);
+                    parentNodes.push(rightNode);
+                }
+            }
+        }
+    }
+    
+    return root;
+}
 
 #endif /* linked_list_hpp */
