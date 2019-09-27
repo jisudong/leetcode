@@ -294,4 +294,23 @@ ListNode* removeElements(ListNode* head, int val) {
     return head;
 }
 
+/**
+ 876.链表的中间结点
+ 
+ 给定一个带有头结点 head 的非空单链表，返回链表的中间结点
+ https://leetcode-cn.com/problems/middle-of-the-linked-list/
+ */
+ListNode* middleNode(ListNode* head) {
+    if (head == NULL || head->next == NULL) {
+        return head;
+    }
+    ListNode *slow = head;
+    ListNode *fast = head;
+    while (fast != NULL && fast->next != NULL) {
+        slow = slow->next;
+        fast = fast->next->next;
+    }
+    return slow;
+}
+
 #endif /* linked_list_hpp */

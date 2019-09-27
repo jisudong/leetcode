@@ -27,7 +27,7 @@ int main(int argc, const char * argv[]) {
     ListNode *l2 = new ListNode(0);
     ListNode *p1 = l1;
     ListNode *p2 = l2;
-    for (int i = 1; i < 11; i++) {
+    for (int i = 1; i < 10; i++) {
         p1->next = new ListNode(i);
         p1 = p1->next;
 //        if (i % 2 != 0) {
@@ -48,7 +48,7 @@ int main(int argc, const char * argv[]) {
 //    TreeNode *tree = sortedListToBST(l1->next);
 //    middleorder(tree);
     
-     ListNode *result = removeElements(l1->next, 5);
+     ListNode *result = middleNode(l1->next);
        
     getchar();
     
