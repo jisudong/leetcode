@@ -342,4 +342,61 @@ bool isPalindrome(ListNode* head) {
     return true;
 }
 
+
+/**
+ 160.相交链表
+ 
+ 找到两个单链表相交的起始节点
+ https://leetcode-cn.com/problems/intersection-of-two-linked-lists/
+ */
+ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+//    if (headA == NULL || headB == NULL) {
+//        return NULL;
+//    }
+//    int lenA = 0, lenB = 0;
+//    ListNode *pA = headA;
+//    ListNode *pB = headB;
+//    while (pA != NULL) {
+//        lenA++;
+//        pA = pA->next;
+//    }
+//    while (pB != NULL) {
+//        lenB++;
+//        pB = pB->next;
+//    }
+//
+//    pA = headA;
+//    pB = headB;
+//    while (lenA > lenB) {
+//        lenA--;
+//        pA = pA->next;
+//    }
+//    while (lenB > lenA) {
+//        lenB--;
+//        pB = pB->next;
+//    }
+//
+//    while (pA != NULL && pB != NULL) {
+//        if (pA == pB) {
+//            return pA;
+//        }
+//        pA = pA->next;
+//        pB = pB->next;
+//    }
+//
+//    return NULL;
+    
+    
+    if (headA == NULL || headB == NULL) {
+        return NULL;
+    }
+    ListNode *pA = headA;
+    ListNode *pB = headB;
+    while (pA != pB) {
+        pA = pA == NULL ? headB : pA->next;
+        pB = pB == NULL ? headA : pB->next;
+    }
+    return pA;
+}
+
 #endif /* linked_list_hpp */

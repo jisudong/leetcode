@@ -27,18 +27,23 @@ int main(int argc, const char * argv[]) {
     ListNode *l2 = new ListNode(0);
     ListNode *p1 = l1;
     ListNode *p2 = l2;
-    for (int i = 1; i < 2; i++) {
+    for (int i = 1; i < 10; i++) {
         p1->next = new ListNode(i);
         p1 = p1->next;
-        p2->next = new ListNode(i);
-        p2 = p2->next;
-//        if (i % 2 != 0) {
-//            p1->next = new ListNode(i);
-//            p1 = p1->next;
-//        } else {
-//            p2->next = new ListNode(i);
-//            p2 = p2->next;
-//        }
+        
+        if (i % 2 != 0) {
+//            if (i >= 5) {
+//                if (i == 5) {
+//                    p2->next = p1;
+//                }
+//            } else {
+//            }
+            p2->next = new ListNode(i);
+            p2 = p2->next;
+            
+        } else {
+            
+        }
     }
     
 //    p2 = reverseList(l2->next);
@@ -53,8 +58,8 @@ int main(int argc, const char * argv[]) {
 //    TreeNode *tree = sortedListToBST(l1->next);
 //    middleorder(tree);
     
-//     ListNode *result = middleNode(l1->next);
-    bool isPalind = isPalindrome(l1->next);
+     ListNode *result = getIntersectionNode(l1->next, l2->next);
+//    bool isPalind = isPalindrome(l1->next);
        
     getchar();
     
