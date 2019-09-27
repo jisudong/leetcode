@@ -271,6 +271,7 @@ TreeNode* sortedListToBST(ListNode* head) {
     return root;
 }
 
+
 /**
  203.移除链表元素
  
@@ -294,6 +295,7 @@ ListNode* removeElements(ListNode* head, int val) {
     return head;
 }
 
+
 /**
  876.链表的中间结点
  
@@ -311,6 +313,33 @@ ListNode* middleNode(ListNode* head) {
         fast = fast->next->next;
     }
     return slow;
+}
+
+
+/**
+ 234. 回文链表
+ 
+ 请判断一个链表是否为回文链表
+ https://leetcode-cn.com/problems/palindrome-linked-list/
+ */
+bool isPalindrome(ListNode* head) {
+    ListNode *fast = head;
+    ListNode *slow = head;
+    while (fast != NULL && fast->next != NULL) {
+        fast = fast->next->next;
+        slow = slow->next;
+    }
+    
+    ListNode *p1 = reverseList(slow);
+    ListNode *p2 = head;
+    while (p1 != NULL) {
+        if (p1->val != p2->val) {
+            return false;
+        }
+        p1 = p1->next;
+        p2 = p2->next;
+    }
+    return true;
 }
 
 #endif /* linked_list_hpp */
