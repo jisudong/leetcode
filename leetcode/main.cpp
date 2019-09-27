@@ -45,9 +45,10 @@ int main(int argc, const char * argv[]) {
 //    bool isCycle = hasCycle(l1->next);
 //    ListNode *result = reverseList(l1->next);
 
-    TreeNode *tree = sortedListToBST(l1->next);
+//    TreeNode *tree = sortedListToBST(l1->next);
+//    middleorder(tree);
     
-    middleorder(tree);
+     ListNode *result = removeElements(l1->next, 5);
        
     getchar();
     

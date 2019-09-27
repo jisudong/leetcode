@@ -271,4 +271,27 @@ TreeNode* sortedListToBST(ListNode* head) {
     return root;
 }
 
+/**
+ 203.移除链表元素
+ 
+ 删除链表中等于给定值 val 的所有节点。
+ https://leetcode-cn.com/problems/remove-linked-list-elements/
+ */
+ListNode* removeElements(ListNode* head, int val) {
+    if (head == NULL) return NULL;
+    
+    ListNode *p = head;
+    while (p->next != NULL) {
+        if (p->next->val == val) {
+            p->next = p->next->next;
+        } else {
+            p = p->next;
+        }
+    }
+    if (head->val == val) {
+        head = head->next;
+    }
+    return head;
+}
+
 #endif /* linked_list_hpp */
