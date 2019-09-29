@@ -2,7 +2,7 @@
 //  main.cpp
 //  leetcode
 //
-//  Created by 秀健身 on 2019/9/26.
+//  Created by jisudong on 2019/9/26.
 //  Copyright © 2019 jisudong. All rights reserved.
 //
 
@@ -27,10 +27,11 @@ int main(int argc, const char * argv[]) {
     ListNode *l2 = new ListNode(0);
     ListNode *p1 = l1;
     ListNode *p2 = l2;
-    for (int i = 1; i < 10; i++) {
+    for (int i = 1; i < 7; i++) {
         p1->next = new ListNode(i);
         p1 = p1->next;
-        
+        p2->next = new ListNode(i);
+        p2 = p2->next;
         if (i % 2 != 0) {
 //            if (i >= 5) {
 //                if (i == 5) {
@@ -38,8 +39,7 @@ int main(int argc, const char * argv[]) {
 //                }
 //            } else {
 //            }
-            p2->next = new ListNode(i);
-            p2 = p2->next;
+            
             
         } else {
             
@@ -58,7 +58,7 @@ int main(int argc, const char * argv[]) {
 //    TreeNode *tree = sortedListToBST(l1->next);
 //    middleorder(tree);
     
-     ListNode *result = getIntersectionNode(l1->next, l2->next);
+     ListNode *result = addTwoNumbers(l1->next, l2->next);
 //    bool isPalind = isPalindrome(l1->next);
        
     getchar();
