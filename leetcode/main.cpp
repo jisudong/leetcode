@@ -58,7 +58,7 @@ int main(int argc, const char * argv[]) {
 //    TreeNode *tree = sortedListToBST(l1->next);
 //    middleorder(tree);
     
-     ListNode *result = addTwoNumbers(l1->next, l2->next);
+     ListNode *result = removeNthFromEnd(l1->next, 6);
 //    bool isPalind = isPalindrome(l1->next);
        
     getchar();
