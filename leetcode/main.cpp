@@ -58,7 +58,7 @@ int main(int argc, const char * argv[]) {
 //    TreeNode *tree = sortedListToBST(l1->next);
 //    middleorder(tree);
     
-     ListNode *result = reverseBetween(l1->next, 2, 4);
+     ListNode *result = swapPairs(l1->next);
 //    bool isPalind = isPalindrome(l1->next);
        
     getchar();

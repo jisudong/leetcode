@@ -489,4 +489,29 @@ ListNode* reverseBetween(ListNode* head, int m, int n) {
     return dummy->next;
 }
 
+
+/**
+ 24. 两两交换链表中的节点
+ 
+ 给定一个链表，两两交换其中相邻的节点，并返回交换后的链表。
+
+ 你不能只是单纯的改变节点内部的值，而是需要实际的进行节点交换
+ 
+ https://leetcode-cn.com/problems/swap-nodes-in-pairs/
+ */
+ListNode* swapPairs(ListNode* head) {
+    ListNode *dummy = new ListNode(0);
+    dummy->next = head;
+    ListNode *prev = dummy;
+    while (head != NULL && head->next != NULL) {
+        ListNode *p = head->next;
+        head->next = p->next;
+        p->next = prev->next;
+        prev->next = p;
+        prev = head;
+        head = head->next;
+    }
+    return dummy->next;
+}
+
 #endif /* linked_list_hpp */
