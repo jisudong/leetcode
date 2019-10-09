@@ -465,4 +465,28 @@ ListNode* removeNthFromEnd(ListNode* head, int n) {
     return dummy->next;
 }
 
+
+/**
+ 92. 反转链表 II
+ 
+ 反转从位置 m 到 n 的链表。请使用一趟扫描完成反转
+ https://leetcode-cn.com/problems/reverse-linked-list-ii/
+ */
+ListNode* reverseBetween(ListNode* head, int m, int n) {
+    ListNode *dummy = new ListNode(0);
+    dummy->next = head;
+    ListNode *prev = dummy;
+    for (int i = 1; i < m; i++) {
+        prev = prev->next;
+    }
+    head = prev->next;
+    for (int i = m; i < n; i++) {
+        ListNode *p = head->next;
+        head->next = p->next;
+        p->next = prev->next;
+        prev->next = p;
+    }
+    return dummy->next;
+}
+
 #endif /* linked_list_hpp */
