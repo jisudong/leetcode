@@ -514,4 +514,37 @@ ListNode* swapPairs(ListNode* head) {
     return dummy->next;
 }
 
+
+/**
+61.旋转链表
+ 
+ 给定一个链表，旋转链表，将链表每个节点向右移动 k 个位置，其中 k 是非负数。
+ https://leetcode-cn.com/problems/rotate-list/
+ */
+ListNode* rotateRight(ListNode* head, int k) {
+    ListNode *p = head;
+    ListNode *last = NULL;
+    int len = 0;
+    while (p != NULL) {
+        last = p;
+        p = p->next;
+        len++;
+    }
+    if (len == 0 || k % len == 0) {
+        return head;
+    }
+    
+    last->next = head;
+    p = head;
+    k %= len;
+    
+    while (len - k) {
+        last = p;
+        p = p->next;
+        len--;
+    }
+    last->next = NULL;
+    return p;
+}
+
 #endif /* linked_list_hpp */
