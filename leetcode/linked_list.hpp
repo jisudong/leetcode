@@ -547,4 +547,37 @@ ListNode* rotateRight(ListNode* head, int k) {
     return p;
 }
 
+
+/**
+ 82. 删除排序链表中的重复元素 II
+ 
+ 给定一个排序链表，删除所有含有重复数字的节点，只保留原始链表中 没有重复出现 的数字
+ https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list-ii/
+ */
+ListNode* deleteDuplicates2(ListNode* head) {
+    ListNode *dummy = new ListNode(0);
+    dummy->next = head;
+    ListNode *prev = dummy;
+    ListNode *p = head;
+    bool haveduplicate = false;
+    while (p != NULL && p->next != NULL) {
+        if (p->val == p->next->val) {
+            p->next = p->next->next;
+            haveduplicate = true;
+        } else {
+            p = p->next;
+            if (haveduplicate) {
+                prev->next = p;
+                haveduplicate = false;
+            } else {
+                prev = prev->next;
+            }
+        }
+    }
+    if (haveduplicate) {
+        prev->next = NULL;
+    }
+    return dummy->next;
+}
+
 #endif /* linked_list_hpp */
