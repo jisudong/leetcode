@@ -622,22 +622,32 @@ ListNode* partition(ListNode* head, int x) {
  https://leetcode-cn.com/problems/linked-list-cycle-ii/
  */
 ListNode *detectCycle(ListNode *head) {
-    if (head == NULL || head->next == NULL) {
-        return NULL;
-    }
-    ListNode *p = head; // 快指针
-    ListNode *q = head; // 慢指针
-    while (p->next != NULL && p->next->next != NULL) {
-        q = q->next;
-        p = p->next->next;
-        if (p == q) { // 有环
-            p = head;
-            while (p != q) {
-                p = p->next;
-                q = q->next;
-            }
-            return p;
+//    if (head == NULL || head->next == NULL) {
+//        return NULL;
+//    }
+//    ListNode *p = head; // 快指针
+//    ListNode *q = head; // 慢指针
+//    while (p->next != NULL && p->next->next != NULL) {
+//        q = q->next;
+//        p = p->next->next;
+//        if (p == q) { // 有环
+//            p = head;
+//            while (p != q) {
+//                p = p->next;
+//                q = q->next;
+//            }
+//            return p;
+//        }
+//    }
+//    return NULL;
+    
+    // 堆的地址从低到高，LeetCode的链表内存是顺序申请的，如果有环，head->next一定小于head
+    // 此方法有讨巧的地方，仅作为一种思路
+    while (head != NULL) {
+        if (!std::less<ListNode *>()(head, head->next)) {
+            return head->next;
         }
+        head = head->next;
     }
     return NULL;
 }
