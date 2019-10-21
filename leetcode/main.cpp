@@ -46,6 +46,8 @@ int main(int argc, const char * argv[]) {
         }
     }
     
+    p1->next = l1->next->next;
+    
 //    p2 = reverseList(l2->next);
 //    p1->next = p2;
     
@@ -58,7 +60,7 @@ int main(int argc, const char * argv[]) {
 //    TreeNode *tree = sortedListToBST(l1->next);
 //    middleorder(tree);
     
-     ListNode *result = rotateRight(l1->next, 10);
+     ListNode *result = detectCycle(l1->next);
 //    bool isPalind = isPalindrome(l1->next);
        
     getchar();

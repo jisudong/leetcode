@@ -614,4 +614,32 @@ ListNode* partition(ListNode* head, int x) {
     return head;
 }
 
+
+/**
+ 142. 环形链表 II
+ 
+ 给定一个链表，返回链表开始入环的第一个节点。 如果链表无环，则返回 null。
+ https://leetcode-cn.com/problems/linked-list-cycle-ii/
+ */
+ListNode *detectCycle(ListNode *head) {
+    if (head == NULL || head->next == NULL) {
+        return NULL;
+    }
+    ListNode *p = head; // 快指针
+    ListNode *q = head; // 慢指针
+    while (p->next != NULL && p->next->next != NULL) {
+        q = q->next;
+        p = p->next->next;
+        if (p == q) { // 有环
+            p = head;
+            while (p != q) {
+                p = p->next;
+                q = q->next;
+            }
+            return p;
+        }
+    }
+    return NULL;
+}
+
 #endif /* linked_list_hpp */
