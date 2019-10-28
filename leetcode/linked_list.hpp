@@ -652,4 +652,54 @@ ListNode *detectCycle(ListNode *head) {
     return NULL;
 }
 
+
+/**
+ 143. 重排链表
+ 
+ 给定一个单链表 L：L0→L1→…→Ln-1→Ln ，
+ 将其重新排列后变为： L0→Ln→L1→Ln-1→L2→Ln-2→…
+
+ 你不能只是单纯的改变节点内部的值，而是需要实际的进行节点交换。
+
+ https://leetcode-cn.com/problems/reorder-list/
+ */
+void reorderList(ListNode* head) {
+    if (head == NULL) return;
+    ListNode *dummy = new ListNode(0);
+    
+    ListNode *p1 = head;
+    ListNode *p2 = head->next;
+    while (p2 != NULL && p2->next != NULL) {
+        p1 = p1->next;
+        p2 = p2->next->next;
+    }
+    
+    ListNode *prev = p1;
+    p2 = p1->next;
+    while (prev->next && p2->next) {
+        ListNode *p = p2->next;
+        p2->next = p->next;
+        p->next = prev->next;
+        prev->next = p;
+    }
+    
+    ListNode *l2 = prev->next;
+    prev->next = NULL;
+    p1 = dummy;
+    while (head != NULL) {
+        p1->next = head;
+        head = head->next;
+        p1 = p1->next;
+        
+        if (l2) {
+            p1->next = l2;
+            l2 = l2->next;
+            p1 = p1->next;
+        }
+        
+    }
+    
+    head = dummy->next;
+}
+
 #endif /* linked_list_hpp */

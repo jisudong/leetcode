@@ -27,7 +27,7 @@ int main(int argc, const char * argv[]) {
     ListNode *l2 = new ListNode(0);
     ListNode *p1 = l1;
     ListNode *p2 = l2;
-    for (int i = 1; i < 7; i++) {
+    for (int i = 1; i < 8; i++) {
         p1->next = new ListNode(i);
         p1 = p1->next;
         p2->next = new ListNode(i);
@@ -46,7 +46,7 @@ int main(int argc, const char * argv[]) {
         }
     }
     
-    p1->next = l1->next->next;
+//    p1->next = l1->next->next;
     
 //    p2 = reverseList(l2->next);
 //    p1->next = p2;
@@ -60,8 +60,9 @@ int main(int argc, const char * argv[]) {
 //    TreeNode *tree = sortedListToBST(l1->next);
 //    middleorder(tree);
     
-     ListNode *result = detectCycle(l1->next);
+//     ListNode *result = detectCycle(l1->next);
 //    bool isPalind = isPalindrome(l1->next);
+    reorderList(l1->next);
        
     getchar();
     
