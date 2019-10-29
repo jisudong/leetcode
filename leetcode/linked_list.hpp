@@ -702,4 +702,31 @@ void reorderList(ListNode* head) {
     head = dummy->next;
 }
 
+
+/**
+ 147. 对链表进行插入排序
+ 
+ https://leetcode-cn.com/problems/insertion-sort-list/
+ */
+ListNode* insertionSortList(ListNode* head) {
+    ListNode *dummy = new ListNode(0);
+    dummy->next = head;
+    ListNode *sorted;
+    while (head != NULL && head->next != NULL) {
+        if (head->val <= head->next->val) {
+            head = head->next;
+            continue;
+        }
+        sorted = dummy;
+        while (sorted->next->val < head->next->val) {
+            sorted = sorted->next;
+        }
+        ListNode *cur = head->next;
+        head->next = cur->next;
+        cur->next = sorted->next;
+        sorted->next = cur;
+    }
+    return dummy->next;
+}
+
 #endif /* linked_list_hpp */

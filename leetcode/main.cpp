@@ -9,6 +9,7 @@
 #include <iostream>
 #include "linked_list.hpp"
 #include <queue>
+#include <cstdlib>
 
 using namespace std;
 
@@ -27,8 +28,8 @@ int main(int argc, const char * argv[]) {
     ListNode *l2 = new ListNode(0);
     ListNode *p1 = l1;
     ListNode *p2 = l2;
-    for (int i = 1; i < 8; i++) {
-        p1->next = new ListNode(i);
+    for (int i = 1; i < 7; i++) {
+        p1->next = new ListNode((rand()%30));
         p1 = p1->next;
         p2->next = new ListNode(i);
         p2 = p2->next;
@@ -60,9 +61,9 @@ int main(int argc, const char * argv[]) {
 //    TreeNode *tree = sortedListToBST(l1->next);
 //    middleorder(tree);
     
-//     ListNode *result = detectCycle(l1->next);
+     ListNode *result = insertionSortList(l1->next);
 //    bool isPalind = isPalindrome(l1->next);
-    reorderList(l1->next);
+//    reorderList(l1->next);
        
     getchar();
     
