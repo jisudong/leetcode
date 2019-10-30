@@ -729,4 +729,49 @@ ListNode* insertionSortList(ListNode* head) {
     return dummy->next;
 }
 
+
+/**
+ 148. 排序链表
+ 
+ 在 O(n log n) 时间复杂度和常数级空间复杂度下，对链表进行排序。
+ https://leetcode-cn.com/problems/sort-list/
+ */
+ListNode *cut(ListNode *head, int n) {
+    ListNode *p = head;
+    while (--n && p != NULL) {
+        p = p->next;
+    }
+    if (p == NULL) {
+        return NULL;
+    }
+    ListNode *next = p->next;
+    p->next = NULL;
+    return next;
+}
+ListNode* sortList(ListNode* head) {
+    ListNode *dummy = new ListNode(0);
+    dummy->next = head;
+    ListNode *p = head;
+    int length = 0;
+    while (p != NULL) {
+        length++;
+        p = p->next;
+    }
+    for (int i = 1; i < length; i <<= 1) {
+        ListNode *cur = dummy->next;
+        ListNode *tail = dummy;
+        while (cur != NULL) {
+            ListNode *left = cur;
+            ListNode *right = cut(left, i);
+            cur = cut(right, i);
+            
+            tail->next = mergeTwoLists(left, right);
+            while (tail->next != NULL) {
+                tail = tail->next;
+            }
+        }
+    }
+    return dummy->next;
+}
+
 #endif /* linked_list_hpp */
