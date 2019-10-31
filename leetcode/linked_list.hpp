@@ -774,4 +774,36 @@ ListNode* sortList(ListNode* head) {
     return dummy->next;
 }
 
+
+/**
+ 328. 奇偶链表
+ 
+ 给定一个单链表，把所有的奇数节点和偶数节点分别排在一起。请注意，这里的奇数节点和偶数节点指的是节点编号的奇偶性，而不是节点的值的奇偶性。
+
+ 请尝试使用原地算法完成。你的算法的空间复杂度应为 O(1)，时间复杂度应为 O(nodes)，nodes 为节点总数。
+
+ https://leetcode-cn.com/problems/odd-even-linked-list/
+ */
+ListNode* oddEvenList(ListNode* head) {
+    if (head == NULL) return NULL;
+    ListNode *dummy1 = new ListNode(0);
+    ListNode *dummy2 = new ListNode(0);
+    ListNode *p1 = dummy1, *p2 = dummy2;
+    int length = 0;
+    while (head != NULL) {
+        length++;
+        if (length % 2 == 1) {
+            p1->next = head;
+            p1 = p1->next;
+        } else {
+            p2->next = head;
+            p2 = p2->next;
+        }
+        head = head->next;
+    }
+    p2->next = NULL;
+    p1->next = dummy2->next;
+    return dummy1->next;
+}
+
 #endif /* linked_list_hpp */
