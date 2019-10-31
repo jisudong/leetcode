@@ -785,25 +785,43 @@ ListNode* sortList(ListNode* head) {
  https://leetcode-cn.com/problems/odd-even-linked-list/
  */
 ListNode* oddEvenList(ListNode* head) {
-    if (head == NULL) return NULL;
-    ListNode *dummy1 = new ListNode(0);
-    ListNode *dummy2 = new ListNode(0);
-    ListNode *p1 = dummy1, *p2 = dummy2;
-    int length = 0;
-    while (head != NULL) {
-        length++;
-        if (length % 2 == 1) {
-            p1->next = head;
-            p1 = p1->next;
-        } else {
-            p2->next = head;
-            p2 = p2->next;
-        }
-        head = head->next;
+//    if (head == NULL) return NULL;
+//    ListNode *dummy1 = new ListNode(0);
+//    ListNode *dummy2 = new ListNode(0);
+//    ListNode *p1 = dummy1, *p2 = dummy2;
+//    int length = 0;
+//    while (head != NULL) {
+//        length++;
+//        if (length % 2 == 1) {
+//            p1->next = head;
+//            p1 = p1->next;
+//        } else {
+//            p2->next = head;
+//            p2 = p2->next;
+//        }
+//        head = head->next;
+//    }
+//    p2->next = NULL;
+//    p1->next = dummy2->next;
+//    return dummy1->next;
+    
+    if (head == NULL || head->next == NULL) {
+        return head;
     }
-    p2->next = NULL;
-    p1->next = dummy2->next;
-    return dummy1->next;
+    // head 为奇链表头结点，o 为奇链表尾结点
+    ListNode *o = head;
+    // p 为偶链表头结点
+    ListNode *p = head->next;
+    // e 为偶链表尾结点
+    ListNode *e = p;
+    while (o->next != NULL && e->next != NULL) {
+        o->next = e->next;
+        o = o->next;
+        e->next = o->next;
+        e = e->next;
+    }
+    o->next = p;
+    return head;
 }
 
 #endif /* linked_list_hpp */
