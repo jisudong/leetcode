@@ -844,36 +844,60 @@ ListNode* oddEvenList(ListNode* head) {
  链接：https://leetcode-cn.com/problems/split-linked-list-in-parts
  */
 vector<ListNode*> splitListToParts(ListNode* root, int k) {
-    vector<ListNode *> lists;
+//    vector<ListNode *> lists;
+//    ListNode *p = root;
+//    int length = 0;
+//    while (p != NULL) {
+//        length++;
+//        p = p->next;
+//    }
+//
+//    int len = length / k;
+//    int remainder = length % k;
+//    p = root;
+//
+//    while (p != NULL) {
+//        lists.push_back(p);
+//        for (int i = 1; i < len; i++) {
+//            p = p->next;
+//        }
+//        if (len > 0 && remainder > 0) {
+//            p = p->next;
+//            remainder--;
+//        }
+//        ListNode *tmp = p->next;
+//        p->next = NULL;
+//        p = tmp;
+//    }
+//
+//    for (int i = (int)lists.size(); i < k; i++) {
+//        lists.push_back(NULL);
+//    }
+//
+//    return lists;
+    
+    
     ListNode *p = root;
     int length = 0;
     while (p != NULL) {
         length++;
         p = p->next;
     }
-    
-    int len = length / k;
+    int aveLength = length / k;
     int remainder = length % k;
-    p = root;
-    
-    while (p != NULL) {
-        lists.push_back(p);
-        for (int i = 1; i < len; i++) {
-            p = p->next;
+    vector<ListNode *> lists(k, NULL);
+    ListNode *head = root;
+    ListNode *prev = NULL;
+    for (int i = 0; i < k; i++) {
+        lists[i] = head;
+        int tempLength = remainder > 0 ? (aveLength + 1) : aveLength;
+        for (int j = 0; j < tempLength; j++) {
+            prev = head;
+            head = head->next;
         }
-        if (len > 0 && remainder > 0) {
-            p = p->next;
-            remainder--;
-        }
-        ListNode *tmp = p->next;
-        p->next = NULL;
-        p = tmp;
+        if (prev != NULL) prev->next = NULL;
+        if (remainder > 0) remainder--;
     }
-    
-    for (int i = (int)lists.size(); i < k; i++) {
-        lists.push_back(NULL);
-    }
-    
     return lists;
 }
 
