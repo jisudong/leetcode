@@ -30,10 +30,12 @@ struct TreeNode {
 
 
 /**
-237.删除链表中的结点
+ 237.删除链表中的结点
 
-删除某个链表中给定的（非末尾）节点，你将只被给定要求被删除的节点。
-https://leetcode-cn.com/problems/delete-node-in-a-linked-list/
+ 删除某个链表中给定的（非末尾）节点，你将只被给定要求被删除的节点。
+
+ 来源：力扣（LeetCode）
+ 链接：https://leetcode-cn.com/problems/delete-node-in-a-linked-list/
 */
 void deleteNode(ListNode* node) {
     node->val = node->next->val;
@@ -45,7 +47,9 @@ void deleteNode(ListNode* node) {
  21.合并两个有序链表
  
  将两个有序链表合并为一个新的有序链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的
- https://leetcode-cn.com/problems/merge-two-sorted-lists/
+ 
+ 来源：力扣（LeetCode）
+ 链接：https://leetcode-cn.com/problems/merge-two-sorted-lists/
  */
 ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
 //    if (l1 == NULL) return l2;
@@ -86,7 +90,9 @@ ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
  83.删除排序链表中的重复元素
  
  给定一个排序链表，删除所有重复的元素，使得每个元素只出现一次。
- https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list/
+ 
+ 来源：力扣（LeetCode）
+ 链接：https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list/
  */
 ListNode* deleteDuplicates(ListNode* head) {
     ListNode *p = head;
@@ -105,7 +111,9 @@ ListNode* deleteDuplicates(ListNode* head) {
  141.环形链表
  
  给定一个链表，判断链表中是否有环
- https://leetcode-cn.com/problems/linked-list-cycle/
+ 
+ 来源：力扣（LeetCode）
+ 链接：https://leetcode-cn.com/problems/linked-list-cycle/
  */
 bool hasCycle(ListNode *head) {
     if (head == NULL || head->next == NULL) return false;
@@ -127,7 +135,9 @@ bool hasCycle(ListNode *head) {
  206.反转链表
  
  反转一个单链表
- https://leetcode-cn.com/problems/reverse-linked-list/
+ 
+ 来源：力扣（LeetCode）
+ 链接：https://leetcode-cn.com/problems/reverse-linked-list/
  */
 ListNode* reverseList(ListNode* head) {
 //    ListNode *result = NULL, *tmp;
@@ -154,7 +164,9 @@ ListNode* reverseList(ListNode* head) {
  109. 有序链表转换二叉搜索树
  
  给定一个单链表，其中的元素按升序排序，将其转换为高度平衡的二叉搜索树。
- https://leetcode-cn.com/problems/convert-sorted-list-to-binary-search-tree/
+ 
+ 来源：力扣（LeetCode）
+ 链接：https://leetcode-cn.com/problems/convert-sorted-list-to-binary-search-tree/
  */
 TreeNode* sortedListToBST(ListNode* head) {
 //    if (head == NULL) return NULL;
@@ -278,7 +290,9 @@ TreeNode* sortedListToBST(ListNode* head) {
  203.移除链表元素
  
  删除链表中等于给定值 val 的所有节点。
- https://leetcode-cn.com/problems/remove-linked-list-elements/
+ 
+ 来源：力扣（LeetCode）
+ 链接：https://leetcode-cn.com/problems/remove-linked-list-elements/
  */
 ListNode* removeElements(ListNode* head, int val) {
     if (head == NULL) return NULL;
@@ -302,7 +316,9 @@ ListNode* removeElements(ListNode* head, int val) {
  876.链表的中间结点
  
  给定一个带有头结点 head 的非空单链表，返回链表的中间结点
- https://leetcode-cn.com/problems/middle-of-the-linked-list/
+ 
+ 来源：力扣（LeetCode）
+ 链接：https://leetcode-cn.com/problems/middle-of-the-linked-list/
  */
 ListNode* middleNode(ListNode* head) {
     if (head == NULL || head->next == NULL) {
@@ -322,7 +338,9 @@ ListNode* middleNode(ListNode* head) {
  234. 回文链表
  
  请判断一个链表是否为回文链表
- https://leetcode-cn.com/problems/palindrome-linked-list/
+ 
+ 来源：力扣（LeetCode）
+ 链接：https://leetcode-cn.com/problems/palindrome-linked-list/
  */
 bool isPalindrome(ListNode* head) {
     ListNode *fast = head;
@@ -349,7 +367,9 @@ bool isPalindrome(ListNode* head) {
  160.相交链表
  
  找到两个单链表相交的起始节点
- https://leetcode-cn.com/problems/intersection-of-two-linked-lists/
+ 
+ 来源：力扣（LeetCode）
+ 链接：https://leetcode-cn.com/problems/intersection-of-two-linked-lists/
  */
 ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
 //    if (headA == NULL || headB == NULL) {
@@ -411,7 +431,8 @@ ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
 
  您可以假设除了数字 0 之外，这两个数都不会以 0 开头。
 
- https://leetcode-cn.com/problems/add-two-numbers/
+ 来源：力扣（LeetCode）
+ 链接：https://leetcode-cn.com/problems/add-two-numbers/
  */
 ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
     ListNode *dummy = new ListNode(0);
@@ -442,7 +463,9 @@ ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
  19.删除链表的倒数第N个结点
  
  给定一个链表，删除链表的倒数第 n 个节点，并且返回链表的头结点
- https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/
+ 
+ 来源：力扣（LeetCode）
+ 链接：https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/
  */
 ListNode* removeNthFromEnd(ListNode* head, int n) {
     if (n <= 0) return NULL;
@@ -472,7 +495,9 @@ ListNode* removeNthFromEnd(ListNode* head, int n) {
  92. 反转链表 II
  
  反转从位置 m 到 n 的链表。请使用一趟扫描完成反转
- https://leetcode-cn.com/problems/reverse-linked-list-ii/
+ 
+ 来源：力扣（LeetCode）
+ 链接：https://leetcode-cn.com/problems/reverse-linked-list-ii/
  */
 ListNode* reverseBetween(ListNode* head, int m, int n) {
     ListNode *dummy = new ListNode(0);
@@ -499,7 +524,8 @@ ListNode* reverseBetween(ListNode* head, int m, int n) {
 
  你不能只是单纯的改变节点内部的值，而是需要实际的进行节点交换
  
- https://leetcode-cn.com/problems/swap-nodes-in-pairs/
+ 来源：力扣（LeetCode）
+ 链接：https://leetcode-cn.com/problems/swap-nodes-in-pairs/
  */
 ListNode* swapPairs(ListNode* head) {
     ListNode *dummy = new ListNode(0);
@@ -521,7 +547,9 @@ ListNode* swapPairs(ListNode* head) {
 61.旋转链表
  
  给定一个链表，旋转链表，将链表每个节点向右移动 k 个位置，其中 k 是非负数。
- https://leetcode-cn.com/problems/rotate-list/
+ 
+ 来源：力扣（LeetCode）
+ 链接：https://leetcode-cn.com/problems/rotate-list/
  */
 ListNode* rotateRight(ListNode* head, int k) {
     ListNode *p = head;
@@ -554,7 +582,9 @@ ListNode* rotateRight(ListNode* head, int k) {
  82. 删除排序链表中的重复元素 II
  
  给定一个排序链表，删除所有含有重复数字的节点，只保留原始链表中 没有重复出现 的数字
- https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list-ii/
+ 
+ 来源：力扣（LeetCode）
+ 链接：https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list-ii/
  */
 ListNode* deleteDuplicates2(ListNode* head) {
     ListNode *dummy = new ListNode(0);
@@ -590,7 +620,8 @@ ListNode* deleteDuplicates2(ListNode* head) {
 
  你应当保留两个分区中每个节点的初始相对位置。
  
- https://leetcode-cn.com/problems/partition-list/
+ 来源：力扣（LeetCode）
+ 链接：https://leetcode-cn.com/problems/partition-list/
  */
 ListNode* partition(ListNode* head, int x) {
     ListNode *dummy1 = new ListNode(0);
@@ -621,7 +652,9 @@ ListNode* partition(ListNode* head, int x) {
  142. 环形链表 II
  
  给定一个链表，返回链表开始入环的第一个节点。 如果链表无环，则返回 null。
- https://leetcode-cn.com/problems/linked-list-cycle-ii/
+ 
+ 来源：力扣（LeetCode）
+ 链接：https://leetcode-cn.com/problems/linked-list-cycle-ii/
  */
 ListNode *detectCycle(ListNode *head) {
 //    if (head == NULL || head->next == NULL) {
@@ -663,7 +696,8 @@ ListNode *detectCycle(ListNode *head) {
 
  你不能只是单纯的改变节点内部的值，而是需要实际的进行节点交换。
 
- https://leetcode-cn.com/problems/reorder-list/
+ 来源：力扣（LeetCode）
+ 链接：https://leetcode-cn.com/problems/reorder-list/
  */
 void reorderList(ListNode* head) {
     if (head == NULL) return;
@@ -708,7 +742,8 @@ void reorderList(ListNode* head) {
 /**
  147. 对链表进行插入排序
  
- https://leetcode-cn.com/problems/insertion-sort-list/
+ 来源：力扣（LeetCode）
+ 链接：https://leetcode-cn.com/problems/insertion-sort-list/
  */
 ListNode* insertionSortList(ListNode* head) {
     ListNode *dummy = new ListNode(0);
@@ -736,7 +771,9 @@ ListNode* insertionSortList(ListNode* head) {
  148. 排序链表
  
  在 O(n log n) 时间复杂度和常数级空间复杂度下，对链表进行排序。
- https://leetcode-cn.com/problems/sort-list/
+ 
+ 来源：力扣（LeetCode）
+ 链接：https://leetcode-cn.com/problems/sort-list/
  */
 ListNode *cut(ListNode *head, int n) {
     ListNode *p = head;
@@ -784,7 +821,8 @@ ListNode* sortList(ListNode* head) {
 
  请尝试使用原地算法完成。你的算法的空间复杂度应为 O(1)，时间复杂度应为 O(nodes)，nodes 为节点总数。
 
- https://leetcode-cn.com/problems/odd-even-linked-list/
+ 来源：力扣（LeetCode）
+ 链接：https://leetcode-cn.com/problems/odd-even-linked-list/
  */
 ListNode* oddEvenList(ListNode* head) {
 //    if (head == NULL) return NULL;
