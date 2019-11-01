@@ -13,6 +13,8 @@
 #include <vector>
 #include <queue>
 
+using namespace std;
+
 struct ListNode {
     int val;
     ListNode *next;
@@ -822,6 +824,57 @@ ListNode* oddEvenList(ListNode* head) {
     }
     o->next = p;
     return head;
+}
+
+
+/**
+ 725. 分隔链表
+ 
+ 给定一个头结点为 root 的链表, 编写一个函数以将链表分隔为 k 个连续的部分。
+
+ 每部分的长度应该尽可能的相等: 任意两部分的长度差距不能超过 1，也就是说可能有些部分为 null。
+
+ 这k个部分应该按照在链表中出现的顺序进行输出，并且排在前面的部分的长度应该大于或等于后面的长度。
+
+ 返回一个符合上述规则的链表的列表。
+
+ 举例： 1->2->3->4, k = 5 // 5 结果 [ [1], [2], [3], [4], null ]
+
+ 来源：力扣（LeetCode）
+ 链接：https://leetcode-cn.com/problems/split-linked-list-in-parts
+ */
+vector<ListNode*> splitListToParts(ListNode* root, int k) {
+    vector<ListNode *> lists;
+    ListNode *p = root;
+    int length = 0;
+    while (p != NULL) {
+        length++;
+        p = p->next;
+    }
+    
+    int len = length / k;
+    int remainder = length % k;
+    p = root;
+    
+    while (p != NULL) {
+        lists.push_back(p);
+        for (int i = 1; i < len; i++) {
+            p = p->next;
+        }
+        if (len > 0 && remainder > 0) {
+            p = p->next;
+            remainder--;
+        }
+        ListNode *tmp = p->next;
+        p->next = NULL;
+        p = tmp;
+    }
+    
+    for (int i = (int)lists.size(); i < k; i++) {
+        lists.push_back(NULL);
+    }
+    
+    return lists;
 }
 
 #endif /* linked_list_hpp */

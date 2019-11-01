@@ -28,7 +28,7 @@ int main(int argc, const char * argv[]) {
     ListNode *l2 = new ListNode(0);
     ListNode *p1 = l1;
     ListNode *p2 = l2;
-    for (int i = 1; i < 6; i++) {
+    for (int i = 1; i < 9; i++) {
         p1->next = new ListNode((rand()%30));
         p1 = p1->next;
         p2->next = new ListNode(i);
@@ -61,9 +61,11 @@ int main(int argc, const char * argv[]) {
 //    TreeNode *tree = sortedListToBST(l1->next);
 //    middleorder(tree);
     
-     ListNode *result = oddEvenList(l1->next);
+//     ListNode *result = oddEvenList(l1->next);
 //    bool isPalind = isPalindrome(l1->next);
 //    reorderList(l1->next);
+    
+    vector<ListNode *> lists = splitListToParts(l1->next, 5);
        
     getchar();
     
