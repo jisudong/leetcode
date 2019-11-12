@@ -24,20 +24,37 @@ void middleorder(TreeNode *tree) {
 
 int maxSubseqSum(int a[], int n) {
     // 三重循环
+//    int thisSum, maxSum = 0;
+//    int i, j, k;
+//    for (i = 0; i < n; i++) {
+//        for (j = i; j < n; j++) {
+//            thisSum = 0;
+//            for (k = i; k < j; k++) {
+//                thisSum += a[k];
+//            }
+//            if (thisSum > maxSum) {
+//                maxSum = thisSum;
+//            }
+//        }
+//    }
+//    return maxSum;
+    
+    
+    // 两重循环
     int thisSum, maxSum = 0;
-    int i, j, k;
+    int i, j;
     for (i = 0; i < n; i++) {
+        thisSum = 0;
         for (j = i; j < n; j++) {
-            thisSum = 0;
-            for (k = i; k < j; k++) {
-                thisSum += a[k];
-            }
+            thisSum += a[j];
             if (thisSum > maxSum) {
                 maxSum = thisSum;
             }
         }
+
     }
     return maxSum;
+        
 }
 
 int main(int argc, const char * argv[]) {
