@@ -22,6 +22,55 @@ void middleorder(TreeNode *tree) {
     middleorder(tree->right);
 }
 
+/*返回三个整数的最大值*/
+int Max(int A, int B, int C) {
+    return (A > B) ? (A > C ? A : C) : (B > C ? B : C);
+}
+
+/*分治法球List[left]到List[right]的最大子列和*/
+int divideAndConquer(int list[], int left, int right) {
+    int maxLeftSum, maxRightSum;  //存放左右子问题的解
+    int maxLeftBorderSum, maxRightBorderSum;  //存放跨分界线的结果
+    
+    int leftBorderSum, rightBorderSum;
+    int center, i;
+    
+    /*递归的终止条件，子列只有1个数字*/
+    if (left == right) {
+        if (list[left] > 0) {
+            return list[left];
+        } else {
+            return 0;
+        }
+    }
+    
+    /* “分”的过程 */
+    center = (left + right) >> 1; //找到中分点
+    maxLeftSum = divideAndConquer(list, left, center); //递归求左子列和
+    maxRightSum = divideAndConquer(list, center + 1, right); //递归求右子列和
+    
+    /*求跨分界线的最大子列和*/
+    maxLeftBorderSum = 0;
+    leftBorderSum = 0;
+    for (i = center; i >= left; i--) {
+        leftBorderSum += list[i];
+        if (leftBorderSum > maxLeftBorderSum) {
+            maxLeftBorderSum = leftBorderSum;
+        }
+    } //左边扫描结束
+    
+    maxRightBorderSum = 0;
+    rightBorderSum = 0;
+    for (i = center + 1; i <= right; i++) {
+        rightBorderSum += list[i];
+        if (rightBorderSum > maxRightBorderSum) {
+            maxRightBorderSum = rightBorderSum;
+        }
+    } //右边扫描结束
+    
+    return Max(maxLeftSum, maxRightSum, maxLeftBorderSum + maxRightBorderSum);
+}
+
 int maxSubseqSum(int a[], int n) {
     // 三重循环
 //    int thisSum, maxSum = 0;
@@ -57,18 +106,21 @@ int maxSubseqSum(int a[], int n) {
     
     
     //在线处理
-    int thisSum, maxSum, i;
-    thisSum = maxSum = 0;
-    for (i = 0; i < n; i++) {
-        thisSum += a[i];
-        if (thisSum > maxSum) {
-            maxSum = thisSum;
-        } else if (thisSum < 0) {
-            thisSum = 0;
-        }
-    }
-    return maxSum;
+//    int thisSum, maxSum, i;
+//    thisSum = maxSum = 0;
+//    for (i = 0; i < n; i++) {
+//        thisSum += a[i];
+//        if (thisSum > maxSum) {
+//            maxSum = thisSum;
+//        } else if (thisSum < 0) {
+//            thisSum = 0;
+//        }
+//    }
+//    return maxSum;
 
+    
+    // 分而治之
+    return divideAndConquer(a, 0, n-1);
 }
 
 int main(int argc, const char * argv[]) {
