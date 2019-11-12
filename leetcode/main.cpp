@@ -41,20 +41,34 @@ int maxSubseqSum(int a[], int n) {
     
     
     // 两重循环
-    int thisSum, maxSum = 0;
-    int i, j;
+//    int thisSum, maxSum = 0;
+//    int i, j;
+//    for (i = 0; i < n; i++) {
+//        thisSum = 0;
+//        for (j = i; j < n; j++) {
+//            thisSum += a[j];
+//            if (thisSum > maxSum) {
+//                maxSum = thisSum;
+//            }
+//        }
+//
+//    }
+//    return maxSum;
+    
+    
+    //在线处理
+    int thisSum, maxSum, i;
+    thisSum = maxSum = 0;
     for (i = 0; i < n; i++) {
-        thisSum = 0;
-        for (j = i; j < n; j++) {
-            thisSum += a[j];
-            if (thisSum > maxSum) {
-                maxSum = thisSum;
-            }
+        thisSum += a[i];
+        if (thisSum > maxSum) {
+            maxSum = thisSum;
+        } else if (thisSum < 0) {
+            thisSum = 0;
         }
-
     }
     return maxSum;
-        
+
 }
 
 int main(int argc, const char * argv[]) {
