@@ -939,4 +939,27 @@ vector<ListNode*> splitListToParts(ListNode* root, int k) {
     return lists;
 }
 
+/**
+ 二叉树层序遍历
+ */
+void levelTraversal(TreeNode *root) {
+    if (root == NULL) {
+        return;
+    }
+    
+    queue<TreeNode *> q;
+    q.push(root);
+    while (!q.empty()) {
+        TreeNode *node = q.front();
+        q.pop();
+        cout << node->val << endl;
+        if (node->left != NULL) {
+            q.push(node->left);
+        }
+        if (node->right != NULL) {
+            q.push(node->right);
+        }
+    }
+}
+
 #endif /* linked_list_hpp */
